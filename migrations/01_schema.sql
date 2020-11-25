@@ -14,7 +14,7 @@ CREATE TABLE "users" (
 
 CREATE TABLE "properties" (
   "id" SERIAL,
-  "user_id" INTEGER REFERENCES users(id),
+  "owner_id" INTEGER REFERENCES users(id),
   "title" TEXT,
   "description" TEXT,
   "thumbnail_url" VARCHAR(255),
@@ -36,14 +36,14 @@ CREATE TABLE "reservations" (
   "id" SERIAL,
   "start_date" DATE,
   "end_date" DATE,
-  "user_id" INTEGER REFERENCES users(id),
+  "guest_id" INTEGER REFERENCES users(id),
   "property_id" INTEGER REFERENCES properties(id),
   PRIMARY KEY ("id")
 );
 
 CREATE TABLE "property_reviews" (
   "id" SERIAL,
-  "user_id" INTEGER REFERENCES users(id),
+  "guest_id" INTEGER REFERENCES users(id),
   "property_id" INTEGER REFERENCES properties(id),
   "reservation_id" INTEGER REFERENCES reservtations(id),
   "rating" SMALLINT,
