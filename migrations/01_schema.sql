@@ -45,7 +45,7 @@ CREATE TABLE "property_reviews" (
   "id" SERIAL,
   "guest_id" INTEGER REFERENCES users(id),
   "property_id" INTEGER REFERENCES properties(id),
-  "reservation_id" INTEGER REFERENCES reservtations(id),
+  "reservation_id" INTEGER REFERENCES reservations(id),
   "rating" SMALLINT,
   "message" TEXT,
   PRIMARY KEY ("id")
