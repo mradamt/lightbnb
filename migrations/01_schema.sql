@@ -4,16 +4,16 @@ DROP TABLE reservations;
 DROP TABLE property_reviews;
 
 
+-- CREATE TABLEs in order of least dependent to most dependent
 CREATE TABLE "users" (
-  "id" SERIAL,
+  "id" SERIAL PRIMARY KEY,
   "name" VARCHAR(255),
   "email" VARCHAR(255),
-  "password" VARCHAR(255),
-  PRIMARY KEY ("id")
+  "password" VARCHAR(255)
 );
 
 CREATE TABLE "properties" (
-  "id" SERIAL,
+  "id" SERIAL PRIMARY KEY,
   "owner_id" INTEGER REFERENCES users(id),
   "title" TEXT,
   "description" TEXT,
@@ -28,26 +28,23 @@ CREATE TABLE "properties" (
   "city" VARCHAR(255),
   "province" VARCHAR(255),
   "post_code" VARCHAR(255),
-  "active" BOOLEAN,
-  PRIMARY KEY ("id")
+  "active" BOOLEAN
 );
 
 CREATE TABLE "reservations" (
-  "id" SERIAL,
+  "id" SERIAL PRIMARY KEY,
   "start_date" DATE,
   "end_date" DATE,
   "guest_id" INTEGER REFERENCES users(id),
-  "property_id" INTEGER REFERENCES properties(id),
-  PRIMARY KEY ("id")
+  "property_id" INTEGER REFERENCES properties(id)
 );
 
 CREATE TABLE "property_reviews" (
-  "id" SERIAL,
+  "id" SERIAL PRIMARY KEY,
   "guest_id" INTEGER REFERENCES users(id),
   "property_id" INTEGER REFERENCES properties(id),
   "reservation_id" INTEGER REFERENCES reservations(id),
   "rating" SMALLINT,
-  "message" TEXT,
-  PRIMARY KEY ("id")
+  "message" TEXT
 );
 
