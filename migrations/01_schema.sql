@@ -1,8 +1,8 @@
-DROP TABLE users;
-DROP TABLE properties;
-DROP TABLE reservations;
-DROP TABLE property_reviews;
-
+-- DROP TABLEs in reverse order
+DROP TABLE if EXISTS property_reviews CASCADE;
+DROP TABLE if EXISTS reservations CASCADE;
+DROP TABLE if EXISTS properties CASCADE;
+DROP TABLE if EXISTS users CASCADE;
 
 -- CREATE TABLEs in order of least dependent to most dependent
 CREATE TABLE "users" (
