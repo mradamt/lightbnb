@@ -1,3 +1,9 @@
+DROP TABLE users;
+DROP TABLE properties;
+DROP TABLE reservations;
+DROP TABLE property_reviews;
+
+
 CREATE TABLE "users" (
   "id" SERIAL,
   "name" VARCHAR(255),
