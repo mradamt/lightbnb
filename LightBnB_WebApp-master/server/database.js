@@ -23,7 +23,7 @@ const getUserWithEmail = function(email) {
   FROM users
   WHERE email=$1
   `, [email])
-  .then(res => res.rows[0] ? res.rows[0] : null)
+  .then(res => res.rows[0])
   .catch(err => null)
 }
 exports.getUserWithEmail = getUserWithEmail;
@@ -39,7 +39,7 @@ const getUserWithId = function(id) {
   FROM users
   WHERE id=$1
   `, [id])
-  .then(res => res.rows[0] ? res.rows[0] : null)
+  .then(res => res.rows[0])
   .catch(err => null)
 }
 exports.getUserWithId = getUserWithId;
@@ -56,7 +56,7 @@ const addUser = function(user) {
   VALUES ($1, $2, $3)
   RETURNING *;
   `, [user.name, user.email, user.password])
-  .then(res => res.rows[0] ? res.rows[0] : null)
+  .then(res => res.rows[0])
   .catch(err => null)
 }
 exports.addUser = addUser;
