@@ -98,7 +98,7 @@ const getAllProperties = function(options, limit = 10) {
   let queryString = `
     SELECT properties.*, AVG(property_reviews.rating) AS average_rating
     FROM properties
-    JOIN property_reviews ON properties.id=property_id
+    LEFT JOIN property_reviews ON properties.id=property_id
   `;
 
   // Check for city 
